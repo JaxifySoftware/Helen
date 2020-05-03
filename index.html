@@ -4,30 +4,98 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Helen & Jaco</title>
 </head>
 
 <body>
-    <section>
-        <h1>Dearest Helen,</h1>
-        <label id="mainPar">Loading...
-    </label>
-        <img src="fakechat.png"></img>
-    </section>
+    <h1 id="mainPar"></h1>
 </body>
 <script>
+    var dots = true;
     var update = setInterval(dateUpdate, 1000);
+    specialSec = "";
 
     function dateUpdate() {
+        if (dots == true) {
+            dots = false;
+        } else {
+            dots = true;
+        }
+        var d = new Date();
+        specialSec = d.getSeconds();
         var date1 = new Date("04/26/2020");
         var date2 = new Date();
 
         var Difference_In_Time = date2.getTime() - date1.getTime();
 
-        var Difference_In_Days = Difference_In_Time / (1000);
+        var Difference_In_Days = Difference_In_Time / 1000;
 
+        var date3 = new Date("12/31/2018 20:12:00");
+        var date4 = new Date("01/13/2016 10:00:00");
 
-        secondsToVal(Difference_In_Days)
+        var Difference_In_Time2 = date2.getTime() - date3.getTime();
+
+        var Difference_In_Days2 = Difference_In_Time2 / 1000;
+
+        var Difference_In_Time3 = date2.getTime() - date4.getTime();
+
+        var Difference_In_Days3 = Difference_In_Time3 / 1000;
+
+        secondsToVal3(Difference_In_Days3);
+        secondsToVal2(Difference_In_Days2);
+        secondsToVal(Difference_In_Days);
+    }
+    var value2 = "";
+    var value3 = "";
+
+    function secondsToVal3(seconds) {
+        var numyears = Math.floor(seconds / 31536000);
+        var nummonths = Math.floor((seconds % 31536000) / 2628000);
+        var numweeks = Math.floor(((seconds % 31536000) % 2628000) / 86400 / 7);
+        var numdays = Math.floor(((seconds % 31536000) % 2628000) / 86400);
+        var numhours = Math.floor(
+            (((seconds % 31536000) % 2628000) % 86400) / 3600
+        );
+        var numminutes = Math.floor((((seconds % 31536000) % 86400) % 3600) / 60);
+        value3 =
+            numyears +
+            " Years " +
+            nummonths +
+            " Months " +
+            numdays +
+            " Days " +
+            numhours +
+            " Hours " +
+            numminutes +
+            " Minutes And " +
+            specialSec +
+            " Seconds";
+        console.log(value2);
+    }
+
+    function secondsToVal2(seconds) {
+        var numyears = Math.floor(seconds / 31536000);
+        var nummonths = Math.floor((seconds % 31536000) / 2628000);
+        var numweeks = Math.floor(((seconds % 31536000) % 2628000) / 86400 / 7);
+        var numdays = Math.floor(((seconds % 31536000) % 2628000) / 86400);
+        var numhours = Math.floor(
+            (((seconds % 31536000) % 2628000) % 86400) / 3600
+        );
+        var numminutes = Math.floor((((seconds % 31536000) % 86400) % 3600) / 60);
+        value2 =
+            numyears +
+            " Years " +
+            nummonths +
+            " Months " +
+            numdays +
+            " Days " +
+            numhours +
+            " Hours " +
+            numminutes +
+            " Minutes And " +
+            specialSec +
+            " Seconds";
+        console.log(value2);
     }
 
     function secondsToVal(seconds) {
@@ -35,64 +103,62 @@
         var nummonths = Math.floor((seconds % 31536000) / 2628000);
         var numweeks = Math.floor(((seconds % 31536000) % 2628000) / 86400 / 7);
         var numdays = Math.floor(((seconds % 31536000) % 2628000) / 86400);
-        var numhours = Math.floor((((seconds % 31536000) % 2628000) % 86400) / 3600);
+        var numhours = Math.floor(
+            (((seconds % 31536000) % 2628000) % 86400) / 3600
+        );
         var numminutes = Math.floor((((seconds % 31536000) % 86400) % 3600) / 60);
 
-
-        var value = (numyears + " Years " + nummonths + " Months " + numdays + " Days " + numhours + " Hours and " + numminutes + " Minutes")
-        console.log(value)
-        document.getElementById('mainPar').innerHTML = "I made this website with the intention of having something to look at should we need to be reminded that we both care about eachother, you'll see a Whatsapp conversation of us having a trip down memory lane!<br><br>It contains messages that basically shows the ups and downs since we've met eachother<br><br> Reading through these few core messages made me realise just how much we actually mean for eachother knowing that we still have feelings for eachother and never really stopped caring.<br>🖤 <br><br> Thank you for " + value + " of being a happy couple 🤗<br><br>Love, Jaco 🖤"
-        value
-        ;
-
+        var value =
+            numyears +
+            " Years " +
+            nummonths +
+            " Months " +
+            numdays +
+            " Days " +
+            numhours +
+            " Hours " +
+            numminutes +
+            " Minutes And " +
+            specialSec +
+            " Seconds";
+        console.log(value);
+        var doters = ":";
+        if (dots == true) {
+            document.getElementById("mainPar").style.border = "7px solid white";
+        } else {
+            document.getElementById("mainPar").style.border = "7px double white";
+        }
+        document.getElementById("mainPar").innerHTML =
+            "Helen And Jaco Have Been<br />Officially Dating For<br>" +
+            value +
+            ",<br>Closely Known Each Other For<br>" +
+            value2 +
+            "<br>And Known Of Each Others Existance For<br>" +
+            value3 +
+            "<br><br>🤍 I'm Always <a style=color:red; href=https://api.whatsapp.com/send?phone=27828826870>Here</a> If You Need Me 🤍";
     }
 </script>
 <style>
-    @media screen and (min-width: 1501px) {
-        body {
-            background-image: url("back.png");
-            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-        }
-        h1 {
-            color: black;
-            position: absolute;
-            float: top;
-            margin-left: 70%;
-        }
-        label {
-            color: black;
-            position: absolute;
-            float: top;
-            margin-left: 58%;
-            margin-right: 3%;
-            font-size: larger;
-            margin-top: 5%;
-            text-align: center;
-        }
-        img {
-            position: absolute;
-        }
+    body {
+        background-color: black;
+        color: white;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        position: fixed;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
     }
     
-    @media screen and (max-width: 1500px) {
-        body {
-            background-image: url("back.png");
-            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-            text-align: center;
-        }
+    h1 {
+        padding: 3%;
+        border-radius: 70px;
+    }
+    
+    @media screen and (max-width: 1000px) {
         h1 {
-            color: black;
-            text-align: center;
-        }
-        label {
-            color: black;
-            margin-top: 5%;
-            text-align: center;
-            margin-bottom: 3%;
-        }
-        img {
-            position: inherit;
-            margin-top: 5%;
+            font-size: 100%;
         }
     }
 </style>
